@@ -6,8 +6,8 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { BookOpen, FileText, Lightbulb, Code, FileCode2, Moon, Sun, Linkedin, Github, Mail, Package, CheckCircle2, PenTool, BookCheck, Sparkles, Search, FileCheck, Home, Clock, Twitter } from "lucide-react"
-import Image from 'next/image'
-export default function HomePage() {
+
+export function Portfolio() {
   const [darkMode, setDarkMode] = useState(false)
   const [typedText, setTypedText] = useState('')
   const aboutRef = useRef<HTMLDivElement>(null)
@@ -17,33 +17,24 @@ export default function HomePage() {
 
   useEffect(() => {
     const text = "WriteStack"
-    
-    let typingIntervalId:any, clearTimeoutId:any;
-  
     const typeText = () => {
-      let i = 0;
-      typingIntervalId = setInterval(() => {
+      let i = 0
+      const typingEffect = setInterval(() => {
         if (i < text.length) {
-          setTypedText(text.slice(0, i + 1));
-          i++;
+          setTypedText(text.slice(0, i + 1))
+          i++
         } else {
-          clearInterval(typingIntervalId); // Clear the interval when typing is complete
-          clearTimeoutId = setTimeout(() => {
-            setTypedText(''); // Clear the text after 3 seconds
-            typeText(); // Restart the typing effect
-          }, 3000); // Wait 3 seconds before restarting
+          clearInterval(typingEffect)
+          setTimeout(() => {
+            setTypedText('')
+            typeText()
+          }, 3000) // Wait 3 seconds before restarting
         }
-      }, 150);
-    };
-    
-    typeText();
-  
-    return () => {
-      clearInterval(typingIntervalId);
-      clearTimeout(clearTimeoutId);
-    };
-  }, []);
-  
+      }, 150)
+    }
+    typeText()
+    return () => clearTimeout()
+  }, [])
 
   const toggleDarkMode = () => {
     setDarkMode(!darkMode)
@@ -60,16 +51,9 @@ export default function HomePage() {
     { id: "packages", icon: Package, label: "Packages", ref: packagesRef },
     { id: "contact", icon: Mail, label: "Contact", ref: contactRef },
   ]
-  const clients = [
-    { name: "Analytics Vidhya", imageUrl: "/al.svg" },
-    { name: "Honeybadger", imageUrl: "/hb.svg" },
-    { name: "LogRocket", imageUrl: "/lr.png" },
-    { name: "Sawo Labs", imageUrl: "/sawos.jfif" },
-    { name: "ChercherTech", imageUrl: "/cher.jfif" },
-    { name: "Workduck", imageUrl: "/wd.jfif" },
-  ]
+
   return (
-    <div className={`container mx-auto max-w-[1000px] min-h-screen ${darkMode ? 'dark' : ''}`}>
+    <div className={`min-h-screen ${darkMode ? 'dark' : ''}`}>
       <nav className="fixed top-0 left-0 right-0 z-50 bg-white dark:bg-gray-900 shadow-md">
         <div className="container mx-auto px-4">
           <div className="flex items-center justify-between h-16">
@@ -205,40 +189,57 @@ export default function HomePage() {
             </CardContent>
           </Card>
           
-          <Card className="border-primary/10 dark:border-primary/20 mb-8 overflow-hidden">
-      <CardHeader className="bg-gradient-to-r from-primary/5 to-transparent dark:from-primary/10 dark:to-transparent">
-        <CardTitle className="text-3xl font-bold text-primary dark:text-white">Our Clients</CardTitle>
-        <CardDescription className="text-lg text-primary/80 dark:text-white/80">
-          Trusted by Industry Leaders
-        </CardDescription>
-      </CardHeader>
-      <CardContent className="p-6 sm:p-8 bg-gradient-to-b from-background to-transparent dark:from-background/5 dark:to-transparent">
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-6 sm:gap-8">
-          {clients.map((client, index) => (
-            <div key={index} className="group flex flex-col items-center">
-              <div className="w-24 h-24 flex items-center justify-center mb-3 overflow-hidden 
-                              transition-all duration-300 ease-in-out
-                              group-hover:scale-105">
-                <Image
-                  src={client.imageUrl}
-                  alt={`${client.name} logo`}
-                  width={80}
-                  height={80}
-                  className="object-contain transition-all duration-300 ease-in-out group-hover:scale-110"
-                />
+          <Card className="border-gray-200 dark:border-gray-700 mb-8">
+            <CardHeader>
+              <CardTitle className="text-2xl text-gray-800 dark:text-gray-200">Clients</CardTitle>
+              <CardDescription className="text-lg text-gray-600 dark:text-gray-400">
+                Trusted by Industry Leaders
+              </CardDescription>
+            </CardHeader>
+            <CardContent>
+              <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
+                <div className="flex flex-col items-center">
+                  <div className="w-24 h-24 bg-gray-200 dark:bg-gray-700 rounded-full flex items-center justify-center mb-2">
+                    <span className="text-2xl font-bold text-gray-600 dark:text-gray-300">TC</span>
+                  </div>
+                  <span className="text-sm font-medium text-gray-600 dark:text-gray-400">TechCorp</span>
+                </div>
+                <div className="flex flex-col items-center">
+                  <div className="w-24 h-24 bg-gray-200 dark:bg-gray-700 rounded-full flex items-center justify-center mb-2">
+                    <span className="text-2xl font-bold text-gray-600 dark:text-gray-300">IS</span>
+                  </div>
+                  <span className="text-sm font-medium text-gray-600 dark:text-gray-400">InnoSoft</span>
+                </div>
+                <div className="flex flex-col items-center">
+                  <div className="w-24 h-24 bg-gray-200 dark:bg-gray-700 rounded-full flex items-center justify-center mb-2">
+                    <span className="text-2xl font-bold text-gray-600 dark:text-gray-300">DS</span>
+                  </div>
+                  <span className="text-sm font-medium text-gray-600 dark:text-gray-400">DataSync</span>
+                </div>
+                <div className="flex flex-col items-center">
+                  <div className="w-24 h-24 bg-gray-200 dark:bg-gray-700 rounded-full flex items-center justify-center mb-2">
+                    <span className="text-2xl font-bold text-gray-600 dark:text-gray-300">CS</span>
+                  </div>
+                  <span className="text-sm font-medium text-gray-600 dark:text-gray-400">CloudServe</span>
+                </div>
+                <div className="flex flex-col items-center">
+                  <div className="w-24 h-24 bg-gray-200 dark:bg-gray-700 rounded-full flex items-center justify-center mb-2">
+                    <span className="text-2xl font-bold text-gray-600 dark:text-gray-300">AI</span>
+                  </div>
+                  <span className="text-sm font-medium text-gray-600 dark:text-gray-400">AInnova</span>
+                </div>
+                <div className="flex flex-col items-center">
+                  <div className="w-24 h-24 bg-gray-200 dark:bg-gray-700 rounded-full flex items-center justify-center mb-2">
+                    <span className="text-2xl font-bold text-gray-600 dark:text-gray-300">BT</span>
+                  </div>
+                  <span className="text-sm font-medium text-gray-600 dark:text-gray-400">BlockTech</span>
+                </div>
               </div>
-              <span className="text-sm font-medium text-primary/80 dark:text-white/80 
-                               transition-all duration-300 ease-in-out group-hover:text-primary dark:group-hover:text-white">
-                {client.name}
-              </span>
-            </div>
-          ))}
-        </div>
-        <p className="mt-8 text-center text-sm text-primary/70 dark:text-white/70 max-w-2xl mx-auto">
-          These are just a few of the companies we've had the pleasure of working with. Each project has contributed to our expertise in creating top-notch technical documentation and innovative solutions.
-        </p>
-      </CardContent>
-    </Card>
+              <p className="mt-6  text-center text-gray-600 dark:text-gray-400">
+                These are just a few of the companies I've had the pleasure of working with. Each project has contributed to my expertise in creating top-notch technical documentation.
+              </p>
+            </CardContent>
+          </Card>
         </section>
 
         <section ref={servicesRef} className="mb-16">
@@ -445,7 +446,7 @@ export default function HomePage() {
                 </form>
                 <div className="flex-1 flex items-center justify-center">
                   <img
-                    src="/placeholder.svg"
+                    src="/placeholder.svg?height=400&width=400"
                     alt="Technical Writing Illustration"
                     className="w-full max-w-md rounded-lg shadow-lg"
                   />
