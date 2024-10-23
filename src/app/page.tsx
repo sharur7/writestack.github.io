@@ -105,10 +105,9 @@ export default function WriteStackSite() {
                   Bridging the gap between complex ideas and clear communication
                 </p>
                 <p className="mt-3 max-w-md text-justify text-base text-gray-500 dark:text-gray-400 sm:text-lg md:mt-5 md:text-xl">
-                  At WriteStack, we turn complex technical concepts into clear, engaging content. With 4 years of experience, we specialize in creating top-tier software documentation, API docs, and technical articles, particularly in computer science and software development.<br /><br />
+                  At WriteStack, we turn complex technical concepts into clear, engaging content. With 4 years of experience, we specialize in creating top-tier software documentation and technical articles. <br /><br />
 
-                  We deliver technical content that empowers your audience and elevates your brand in the tech industry. Our work is precise, user-friendly, and accessible to both technical and non-technical audiences—ensuring your message is always clear, no matter how complex the subject.
-                </p>
+                  We deliver technical content that empowers your audience and elevates your brand in the tech industry. Our work is precise, user-friendly, and accessible to both technical and non-technical audiences.
               </div>
               <div className="mt-10 lg:mt-0 lg:w-1/2">
                 <svg className="w-full h-auto" viewBox="0 0 646 600" fill="none" xmlns="http://www.w3.org/2000/svg">
