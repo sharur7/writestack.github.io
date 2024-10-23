@@ -105,7 +105,9 @@ export default function WriteStackSite() {
                   Bridging the gap between complex ideas and clear communication
                 </p>
                 <p className="mt-3 max-w-md text-justify text-base text-gray-500 dark:text-gray-400 sm:text-lg md:mt-5 md:text-xl">
-                  At WriteStack, we transform complex technical concepts into clear, engaging content. With over a decade of experience, we specialize in creating top-notch documentation and blog articles that empower your audience and elevate your brand in the tech industry.
+                  At WriteStack, we turn complex technical concepts into clear, engaging content. With 4 years of experience, we specialize in creating top-tier software documentation, API docs, and technical articles, particularly in computer science and software development.<br />
+
+                  We deliver technical content that empowers your audience and elevates your brand in the tech industry. Our work is precise, user-friendly, and accessible to both technical and non-technical audiences—ensuring your message is always clear, no matter how complex the subject.
                 </p>
               </div>
               <div className="mt-10 lg:mt-0 lg:w-1/2">
@@ -460,16 +462,16 @@ export default function WriteStackSite() {
               </ul>
             </div>
             <div>
-              <h3 className="text-sm font-semibold text-gray-600 dark:text-gray-400 uppercase tracking-wider">Connect</h3>
+              <h3 className="text-sm font-semibold text-gray-600 dark:text-gray-400 uppercase tracking-wider">Contact Us</h3>
               <ul className="mt-4 space-y-4">
                 <li>
                   <a href="mailto:info@writestack.com" className="text-base text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white">
-                    info@writestack.com
+                    info@writestack.tech
                   </a>
                 </li>
                 <li>
                   <a href="https://twitter.com/writestack" target="_blank" rel="noopener noreferrer" className="text-base text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white">
-                    @writestack
+                    //@writestack
                   </a>
                 </li>
               </ul>
@@ -477,7 +479,7 @@ export default function WriteStackSite() {
           </div>
           <div className="mt-12 border-t border-gray-200 dark:border-gray-700 pt-8">
             <p className="text-base text-gray-500 dark:text-gray-400 text-center">
-              &copy; 2024 WriteStack, Inc. All rights reserved.
+              Copyright &copy; 2024 WriteStack. All rights reserved.
             </p>
           </div>
         </div>
