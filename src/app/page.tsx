@@ -108,7 +108,8 @@ export default function WriteStackSite() {
                   At WriteStack, we turn complex technical concepts into clear, engaging content. With 4 years of experience, we specialize in creating top-tier software documentation and technical articles. <br /><br />
 
                   We deliver technical content that empowers your audience and elevates your brand in the tech industry. Our work is precise, user-friendly, and accessible to both technical and non-technical audiences.
-              </div>
+                 <p>
+                </div>
               <div className="mt-10 lg:mt-0 lg:w-1/2">
                 <svg className="w-full h-auto" viewBox="0 0 646 600" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <path d="M388.5 600C522.5 600 646 476.5 646 342.5C646 208.5 522.5 85 388.5 85C254.5 85 131 208.5 131 342.5C131 476.5 254.5 600 388.5 600Z" fill="#F0F4FF"/>
