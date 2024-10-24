@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useRef } from 'react'
+import { useState, useRef, useEffect } from 'react'
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle, CardFooter } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
@@ -8,6 +8,53 @@ import { Label } from "@/components/ui/label"
 import { Textarea } from "@/components/ui/textarea"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Moon, Sun, Menu, X, Check, PenTool, BookOpen, FileText, Code, FileCheck, Clock, Search, Globe, FileBox, ArrowRight } from "lucide-react"
+const useTypingEffect = (words: string[], typingSpeed: number = 150, erasingSpeed: number = 100, delayBetweenWords: number = 2000) => {
+  const [currentWordIndex, setCurrentWordIndex] = useState(0)
+  const [currentText, setCurrentText] = useState('')
+  const [isDeleting, setIsDeleting] = useState(false)
+  const [isWaiting, setIsWaiting] = useState(false)
+
+  useEffect(() => {
+    let timeout: NodeJS.Timeout
+
+    const animateText = () => {
+      const currentWord = words[currentWordIndex]
+      
+      if (isWaiting) {
+        timeout = setTimeout(() => {
+          setIsWaiting(false)
+          setIsDeleting(true)
+          animateText()
+        }, delayBetweenWords)
+        return
+      }
+
+      if (!isDeleting) {
+        setCurrentText(currentWord.substring(0, currentText.length + 1))
+        
+        if (currentText === currentWord) {
+          setIsWaiting(true)
+          return
+        }
+      } else {
+        setCurrentText(currentWord.substring(0, currentText.length - 1))
+        
+        if (currentText === '') {
+          setIsDeleting(false)
+          setCurrentWordIndex((currentWordIndex + 1) % words.length)
+        }
+      }
+
+      timeout = setTimeout(animateText, isDeleting ? erasingSpeed : typingSpeed)
+    }
+
+    timeout = setTimeout(animateText, typingSpeed)
+
+    return () => clearTimeout(timeout)
+  }, [currentText, currentWordIndex, isDeleting, isWaiting, words, typingSpeed, erasingSpeed, delayBetweenWords])
+
+  return currentText
+}
 
 export default function WriteStackSite() {
   const [darkMode, setDarkMode] = useState(false)
@@ -20,7 +67,7 @@ export default function WriteStackSite() {
   const clientsRef = useRef<HTMLDivElement>(null)
   const contactRef = useRef<HTMLDivElement>(null)
   const statsRef = useRef<HTMLDivElement>(null)
-
+  const animatedText = useTypingEffect(['Business', 'Team', 'Organization', 'Innovation'], 60, 200, 1500);
   const toggleDarkMode = () => {
     setDarkMode(!darkMode)
     document.documentElement.classList.toggle('dark')
@@ -99,12 +146,12 @@ export default function WriteStackSite() {
               <div className="lg:w-1/2">
                 <h1 className="text-4xl tracking-tight font-extrabold text-gray-900 dark:text-white sm:text-5xl md:text-6xl">
                   <span className="block">Expert Technical Writing</span>
-                  <span className="block text-indigo-600">for Your Business</span>
+                  <span className="block text-indigo-600">for Your <span className="inline-block w-32">{animatedText}</span></span>
                 </h1>
                 <p className="mt-3 text-xl text-indigo-600 font-semibold">
                   Bridging the gap between complex ideas and clear communication
                 </p>
-                <p className="mt-3 max-w-md text-justify text-base text-gray-500 dark:text-gray-400 sm:text-lg md:mt-5 md:text-xl">
+                <p className="mt-3 max-w-[630px] text-justify text-base text-gray-500 dark:text-gray-400 sm:text-lg md:mt-5 md:text-xl">
                   At WriteStack, we turn complex technical concepts into clear, engaging content. With 4 years of experience, we specialize in creating top-tier software documentation and technical articles. <br /><br />
 
                   We deliver technical content that empowers your audience and elevates your brand in the tech industry. Our work is precise, user-friendly, and accessible to technical and non-technical audiences.
@@ -388,7 +435,7 @@ export default function WriteStackSite() {
               <div className="grid grid-cols-2 gap-8 md:grid-cols-3 lg:grid-cols-6">
                 {["LogRocket", "Sawo Labs", "Honeybadger", "Analytics Vidhya", "WorkDuck", "CherCherTech"].map((client) => (
                   <div key={client} className="col-span-1 flex justify-center items-center">
-                    <div className="h-16 w-16 bg-white dark:bg-gray-800 rounded-full flex items-center justify-center overflow-hidden">
+                    <div className="h-16 w-16 rounded-full flex items-center justify-center ">
                       <img src={`${client.toLowerCase()}.png`} alt={`${client} logo`} className="h-12 w-12 object-contain" />
                     </div>
                     <span className="ml-2 text-gray-900 dark:text-gray-100">{client}</span>
