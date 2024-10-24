@@ -445,39 +445,63 @@ export default function WriteStackSite() {
             </div>
           </div>
         </section>
-
-        <section ref={contactRef} className="py-20 bg-gradient-to-br from-indigo-500 to-purple-600 text-white">
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="max-w-4xl mx-auto">
-              <h2 className="text-4xl font-extrabold text-center mb-8">Get in Touch</h2>
-              <p className="text-xl text-center mb-12">
-                Ready to elevate your technical documentation? Let's discuss your project and create exceptional content together.
-              </p>
-              <Card className="p-8 bg-white/10 backdrop-blur-lg border-none">
-                <CardContent>
-                  <form className="grid grid-cols-1 gap-6 md:grid-cols-2">
-                    <div>
-                      <Label htmlFor="name" className="text-white">Name</Label>
-                      <Input id="name" name="name" type="text" required className="mt-1 bg-white text-gray-900 placeholder-gray-500 border-white" placeholder="Your Name" />
-                    </div>
-                    <div>
-                      <Label htmlFor="email" className="text-white">Email</Label>
-                      <Input id="email" name="email" type="email" required className="mt-1 bg-white text-gray-900 placeholder-gray-500 border-white" placeholder="your@email.com" />
-                    </div>
-                    <div className="md:col-span-2">
-                      <Label htmlFor="message" className="text-white">Message</Label>
-                      <Textarea id="message" name="message" rows={4} required className="mt-1 bg-white text-gray-900 placeholder-gray-500 border-white" placeholder="Tell us about your project..." />
-                    </div>
-                    <div className="md:col-span-2">
-                      <Button type="submit" className="w-full bg-white text-indigo-600 hover:bg-indigo-100">
-                        Send Message
-                      </Button>
-                    </div>
-                  </form>
-                </CardContent>
-              </Card>
+        <section className="py-20 bg-gradient-to-br from-indigo-500 to-purple-600 text-white">
+            <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+                <div className="max-w-4xl mx-auto">
+                    <h2 className="text-4xl font-extrabold text-center mb-8">Get in Touch</h2>
+                    <p className="text-xl text-center mb-12">
+                        Ready to elevate your technical documentation? Let's discuss your project and create exceptional content together.
+                    </p>
+                    <Card className="p-8 bg-white/10 backdrop-blur-lg border-none">
+                        <CardContent>
+                            <form
+                                action="https://formspree.io/f/mwpkpyll" 
+                                method="POST"
+                                className="grid grid-cols-1 gap-6 md:grid-cols-2"
+                            >
+                                <div>
+                                    <Label htmlFor="name" className="text-white">Name</Label>
+                                    <Input 
+                                        id="name" 
+                                        name="name" 
+                                        type="text" 
+                                        required 
+                                        className="mt-1 bg-white text-gray-900 placeholder-gray-500 border-white" 
+                                        placeholder="Your Name" 
+                                    />
+                                </div>
+                                <div>
+                                    <Label htmlFor="email" className="text-white">Email</Label>
+                                    <Input 
+                                        id="email" 
+                                        name="email" 
+                                        type="email" 
+                                        required 
+                                        className="mt-1 bg-white text-gray-900 placeholder-gray-500 border-white" 
+                                        placeholder="your@email.com" 
+                                    />
+                                </div>
+                                <div className="md:col-span-2">
+                                    <Label htmlFor="message" className="text-white">Message</Label>
+                                    <Textarea 
+                                        id="message" 
+                                        name="message" 
+                                        rows={4} 
+                                        required 
+                                        className="mt-1 bg-white text-gray-900 placeholder-gray-500 border-white" 
+                                        placeholder="Tell us about your project..." 
+                                    />
+                                </div>
+                                <div className="md:col-span-2">
+                                    <Button type="submit" className="w-full bg-white text-indigo-600 hover:bg-indigo-100">
+                                        Send Message
+                                    </Button>
+                                </div>
+                            </form>
+                        </CardContent>
+                    </Card>
+                </div>
             </div>
-          </div>
         </section>
       </main>
 
